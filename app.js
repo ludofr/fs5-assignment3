@@ -150,7 +150,7 @@ function MenuSearchService($http)
 
     for(var idx = 0 ; idx < result.menu_items.length ; idx++)
     {
-      var menuName = result.menu_items[idx].name.toLowerCase() ;
+      var menuName = result.menu_items[idx].description.toLowerCase() ;
 
       for(var searchIdx = 0 ; searchIdx < searchStringArray.length ; searchIdx ++)
       {
