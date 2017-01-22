@@ -104,7 +104,7 @@ function SearchMenuController (MenuSearchService)
 ////////////////////////////////////////////////////////////////
 // SERVICE
 ////////////////////////////////////////////////////////////////
-MenuSearchService.$inject = ['$http', ApiPath] ;
+MenuSearchService.$inject = ['$http', 'ApiPath'] ;
 function MenuSearchService($http, ApiPath)
 {
   var service = this ;
