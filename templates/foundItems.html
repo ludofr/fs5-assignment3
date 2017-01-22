@@ -1,12 +1,13 @@
-<li>
+<li ng-repeat="item in foundItems">
  <div class="listElem">
-   <span class="itemName"> <b>{{shortName}}</b> - {{name}} </span>
+   <span class="itemName"><b>{{item.shortName}}</b> - {{item.name}} </span>
     <button   class="btn btn-warning btn-sm trashButton"
-           ng-click="onRemoveFct({ itemIndex : $index })">
+           ng-click="onRemove({ itemIndex : $index })">
 
        <span class="glyphicon glyphicon-trash"></span>
        Don't want this one
     </button>
-    <div class="itemDescr"> <i>{{description}}</i> </div>
+    <div ng-if="item.description === '' "> <br/> </div>
+    <div class="itemDescr"> <i>{{item.description}}</i> </div>
  </div>
 </li>

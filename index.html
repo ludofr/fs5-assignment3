@@ -35,24 +35,21 @@
 
     </div>
 
-    <div ng-if="ctrl.isSearchEmpty();" class="bg-danger infoBanner" >
+    <div ng-if="ctrl.isSearchEmpty();" class="alert alert-danger infoBanner" >
       <span class="glyphicon glyphicon-remove-sign"></span>
-      <span> {{ctrl.noResult}}  </span>
+      <span> <strong> {{ctrl.noResult}} </strong> </span>
     </div>
 
     <div ng-if="ctrl.isSearchSuccessful();"
-         class="bg-success infoBanner" >
+         class="alert alert-success infoBanner" >
       <span class="glyphicon glyphicon-info-sign"></span>
       <span> {{ctrl.matchesNumber();}} matches </span>
     </div>
 
      <div class="itemList">
        <ul class="list-unstyled">
-         <found-item ng-repeat="item in ctrl.foundItems"
-                     short-name=item.shortName
-                           name=item.name
-                    description=item.description
-                     on-remove =ctrl.ignoreItem(itemIndex)>
+         <found-item found-items=ctrl.foundItems
+                     on-remove  =ctrl.ignoreItem(itemIndex)>
         </found-item>
        </ul>
      </div>

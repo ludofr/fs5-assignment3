@@ -17,10 +17,8 @@ function FoundItem()
       templateUrl : "templates/foundItems.html",
       scope       :
       {
-        shortName   : "<"  ,  // one-way binding
-        name        : "<"  ,  // one-way binding
-        description : "<"  ,  // one-way binding
-        onRemoveFct : "&onRemove"       // reference bining
+        foundItems : "<" ,  // one-way binding
+        onRemove   : "&"    // reference bining
       }
     }
 };
