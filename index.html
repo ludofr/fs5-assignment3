@@ -25,8 +25,12 @@
             ng-keypress="ctrl.search();"
             placeholder="Search in menu">
 
-     <button type="button" class="btn btn-primary" ng-click="ctrl.search();">
-       <span class="glyphicon glyphicon-search"></span> Narrow it down for me !
+     <button type="button"
+             class="btn btn-primary"
+             ng-click="ctrl.search();">
+
+             <span class="glyphicon glyphicon-search"></span>
+             Narrow it down for me !
      </button>
 
     </div>
@@ -36,27 +40,20 @@
       <span> {{ctrl.noResult}}  </span>
     </div>
 
-    <div ng-if="ctrl.isSearchSuccessful();" class="bg-success infoBanner" >
+    <div ng-if="ctrl.isSearchSuccessful();"
+         class="bg-success infoBanner" >
       <span class="glyphicon glyphicon-info-sign"></span>
       <span> {{ctrl.matchesNumber();}} matches </span>
     </div>
 
      <div class="itemList">
        <ul class="list-unstyled">
-         <li ng-repeat="item in ctrl.foundItems">
-
-          <div class="listElem">
-
-            <span class="itemName"> <b>{{item.shortName}}</b> - {{item.name}} </span>
-             <button class="btn btn-warning btn-sm trashButton" ng-click="ctrl.ignoreItem($index);">
-                <span class="glyphicon glyphicon-trash"></span>
-                Don't want this one
-             </button>
-
-             <div class="itemDescr"> <i>{{item.description}}</i> </div>
-          </div>
-
-         </li>
+         <found-item ng-repeat="item in ctrl.foundItems"
+                     short-name=item.shortName
+                           name=item.name
+                    description=item.description
+                     on-remove =ctrl.ignoreItem(itemIndex)>
+        </found-item>
        </ul>
      </div>
    </div>

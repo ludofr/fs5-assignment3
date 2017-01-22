@@ -1,0 +1,12 @@
+<li>
+ <div class="listElem">
+   <span class="itemName"> <b>{{shortName}}</b> - {{name}} </span>
+    <button   class="btn btn-warning btn-sm trashButton"
+           ng-click="onRemoveFct({ itemIndex : $index })">
+
+       <span class="glyphicon glyphicon-trash"></span>
+       Don't want this one
+    </button>
+    <div class="itemDescr"> <i>{{description}}</i> </div>
+ </div>
+</li>

@@ -3,9 +3,30 @@
 
 var module = angular.module('NarrowItDownApp', []);
 module.controller('SearchMenuController', SearchMenuController);
-module.service('MenuSearchService', MenuSearchService);
-module.directive('foundItems', FoundItems);
+module.service   ('MenuSearchService'   , MenuSearchService);
+module.directive ('foundItem'           , FoundItem);
 
+////////////////////////////////////////////////////////////////
+// DIRECTIVE
+////////////////////////////////////////////////////////////////
+
+function FoundItem()
+{
+    return {
+      restrict    : "E" , // element only
+      templateUrl : "templates/foundItems.html",
+      scope       :
+      {
+        shortName   : "<"  ,  // one-way binding
+        name        : "<"  ,  // one-way binding
+        description : "<"  ,  // one-way binding
+        onRemoveFct : "&onRemove"       // reference bining
+      }
+    }
+};
+
+////////////////////////////////////////////////////////////////
+// CONTROLLER
 ////////////////////////////////////////////////////////////////
 
 SearchMenuController.$inject = ['MenuSearchService'];
@@ -35,7 +56,6 @@ function SearchMenuController (MenuSearchService)
         ctrl.researchTriggered = false ;
       }
       );
-
     }
     else
     {
@@ -53,7 +73,8 @@ function SearchMenuController (MenuSearchService)
 
   ctrl.isSearchEmpty = function ()
   {
-      if (ctrl.researchTriggered  && MenuSearchService.matchesNumber() == 0)
+      if (ctrl.researchTriggered &&
+          MenuSearchService.matchesNumber() == 0)
       {
         return true ;
       }
@@ -65,7 +86,8 @@ function SearchMenuController (MenuSearchService)
 
   ctrl.isSearchSuccessful = function ()
   {
-      if (ctrl.researchTriggered && MenuSearchService.matchesNumber() != 0)
+      if (ctrl.researchTriggered &&
+          MenuSearchService.matchesNumber() != 0)
       {
         return true ;
       }
@@ -79,9 +101,9 @@ function SearchMenuController (MenuSearchService)
   {
     return MenuSearchService.matchesNumber()
   } ;
-
-
 }
+////////////////////////////////////////////////////////////////
+// SERVICE
 ////////////////////////////////////////////////////////////////
 MenuSearchService.$inject = ['$http'] ;
 function MenuSearchService($http)
@@ -138,7 +160,7 @@ function MenuSearchService($http)
 
         if(menuName.match(re))
         {
-
+          // only extract what is relevant to be displayed
           foundItemsList.push(
             {
               name        : result.menu_items[idx].name ,
@@ -151,7 +173,6 @@ function MenuSearchService($http)
       }
     }
   }
-
 }
 
 })();

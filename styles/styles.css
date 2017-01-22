@@ -17,18 +17,20 @@ h1
   position: relative;
 }
 
-.itemName
-{
-
-}
-
 .itemList li
 {
    margin-bottom: 4px ;
 }
 
-.itemList li:nth-child(odd)		{ background-color:#eee; }
-.itemList li:nth-child(even)		{ background-color:#b5e5f5; }
+.itemList li:nth-child(odd)
+{
+  background-color:#eee;
+}
+
+.itemList li:nth-child(even)
+{
+  background-color:#b5e5f5;
+}
 
 .searchBtn
 {
