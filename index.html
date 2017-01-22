@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" ng-app="NarrowItDownApp">
+  <head>
+    <title>Menu</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+
+  </head>
+<body>
+  <h1>Menu</h1>
+<div class="container">
+   <div class="col-lg-12" ng-controller="SearchMenuController as ctrl">
+
+     <div class="searchBtn form-inline text-center">
+
+     <input type="text"
+            class="form-control"
+            ng-model="ctrl.searchString"
+            ng-keypress="ctrl.search();"
+            placeholder="Search in menu">
+
+     <button type="button" class="btn btn-primary" ng-click="ctrl.search();">
+       <span class="glyphicon glyphicon-search"></span> Narrow it down for me !
+     </button>
+
+    </div>
+
+    <div ng-if="ctrl.isSearchEmpty();" class="bg-danger infoBanner" >
+      <span class="glyphicon glyphicon-remove-sign"></span>
+      <span> {{ctrl.noResult}}  </span>
+    </div>
+
+    <div ng-if="ctrl.isSearchSuccessful();" class="bg-success infoBanner" >
+      <span class="glyphicon glyphicon-info-sign"></span>
+      <span> {{ctrl.matchesNumber();}} matches </span>
+    </div>
+
+     <div class="itemList">
+       <ul class="list-unstyled">
+         <li ng-repeat="item in ctrl.foundItems">
+
+          <div class="listElem">
+
+            <span class="itemName"> <b>{{item.shortName}}</b> - {{item.name}} </span>
+             <button class="btn btn-warning btn-sm trashButton" ng-click="ctrl.ignoreItem($index);">
+                <span class="glyphicon glyphicon-trash"></span>
+                Don't want this one
+             </button>
+
+             <div class="itemDescr"> <i>{{item.description}}</i> </div>
+          </div>
+
+         </li>
+       </ul>
+     </div>
+   </div>
+
+</div>
+</body>
+</html>

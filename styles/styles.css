@@ -1,0 +1,44 @@
+h1
+{
+  margin-bottom: 20px;
+  color:gray ;
+  text-align: center;
+}
+
+.trashButton
+{
+  margin-right: 5px;
+  float : right ;
+}
+
+.listElem
+{
+  padding: 5px;
+  position: relative;
+}
+
+.itemName
+{
+
+}
+
+.itemList li
+{
+   margin-bottom: 4px ;
+}
+
+.itemList li:nth-child(odd)		{ background-color:#eee; }
+.itemList li:nth-child(even)		{ background-color:#b5e5f5; }
+
+.searchBtn
+{
+  margin-bottom: 20px;
+}
+
+.infoBanner
+{
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px ;
+  text-align: center;
+}
